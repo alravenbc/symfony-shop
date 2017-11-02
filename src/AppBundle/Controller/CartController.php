@@ -32,20 +32,6 @@ class CartController extends Controller
     }
 
     /**
-     * Finds and displays a cart entity.
-     *
-     * @Route("/{id}", name="cart_show")
-     * @Method("GET")
-     */
-    public function showAction(Cart $cart)
-    {
-
-        return $this->render('cart/show.html.twig', array(
-            'cart' => $cart,
-        ));
-    }
-
-    /**
      * Displays a form to edit an existing cart entity.
      *
      * @Route("/{id}/edit", name="cart_edit")
