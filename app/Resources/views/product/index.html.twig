@@ -36,9 +36,6 @@
                             <a href="{{ path('product_show', { 'id': product.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('product_edit', { 'id': product.id }) }}">edit</a>
-                        </li>
-                        <li>
                             <a href="{{ path('product_addtocart', { 'id': product.id }) }}">add to cart</a>
                         </li>
                     </ul>
@@ -48,11 +45,6 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('product_new') }}">Create a new product</a>
-        </li>
-    </ul>
     <ul>
         <li>
             <a href="{{ path('cart_index') }}">Carts list</a>
