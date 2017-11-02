@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Carts list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cart in carts %}
+            <tr>
+                <td>{{ cart.name }}</td>
+                <td>{{ cart.email }}</td>
+                <td>{{ cart.status }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('cart_show', { 'id': cart.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('cart_edit', { 'id': cart.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('cart_new') }}">Create a new cart</a>
+        </li>
+        <li>
+            <a href="{{ path('product_index') }}">Back to the Products list</a>
+        </li>
+    </ul>
+{% endblock %}

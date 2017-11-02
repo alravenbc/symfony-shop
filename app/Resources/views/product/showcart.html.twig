@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Cart - {{ cart.name }} - {{ cart.email }}</h1>
+
+
+    <form method="post">
+
+        <table>
+            <thead>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for product in cart.products %}
+                <tr>
+                    <td><label><input type="checkbox" name="delete[]" value="{{ product.id }}"/></label></td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.price }}</td>
+                    <td>{{ product.description }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <input type="submit" value="Remove selected from cart" />
+
+    </form>
+
+    <a href="{{ path('order_products', { 'id': cart.id }) }}">Order products</a>
+    <a href="{{ path('product_index') }}">Back to the list</a>
+
+
+{% endblock %}

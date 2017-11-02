@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 xmlns="http://www.w3.org/1999/html">Products list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Cart</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.description }}</td>
+                <td>
+                {% for cart in product.carts %}
+                    <ul>
+                        <li>
+                            <a href="{{ path('cart_show', { 'id': cart.id }) }}">{{ cart.name }}</a>
+                        </li>
+                    </ul>
+                {% endfor %}
+                </td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('product_show', { 'id': product.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('product_edit', { 'id': product.id }) }}">edit</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('product_addtocart', { 'id': product.id }) }}">add to cart</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('product_new') }}">Create a new product</a>
+        </li>
+    </ul>
+    <ul>
+        <li>
+            <a href="{{ path('cart_index') }}">Carts list</a>
+        </li>
+    </ul>
+{% endblock %}

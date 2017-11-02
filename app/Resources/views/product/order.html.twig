@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Cart - {{ cart.name }} - {{ cart.email }}</h1>
+
+
+    <form method="post">
+
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for product in cart.products %}
+                <tr>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.price }}</td>
+                    <td>{{ product.description }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        {% if cart.status == '0' %}
+        <input type="submit" value="Order products" />
+        {% else %}
+            <h3>Your order is in queue!</h3>
+        {% endif %}
+
+    </form>
+
+    <a href="{{ path('product_index') }}">Back to the list</a>
+
+
+{% endblock %}
